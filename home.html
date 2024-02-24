@@ -7,19 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <input type="number" id="in" value="4"> -->
-    <!-- <button onclick="print_mat()">Done</button> -->
-    
+    <!-- first veiw page of website -->
+    <div class="container">
+        <h1>Welcome to the World of Visualization!</h1>
+        <p>Tell me and I forget, teach me and I may remember, involve me and I learn
+            <i>-Benjamin Franklin</i>
+        </p>
+        <button class="start-button" onclick="fun1()">Start</button>
+    </div>
+
+    <!-- this code is for showing pop -->
     <div class="popup" id="popup">
         <h2>Give number of Job's</h2>
         <input type="number" id="in" value="4" style="border-color: rgba(88, 247, 30, 0.643)">
         <button onclick="print_mat()">✓</button>
         <br>
         <h2>Enter Person-Job:</h2>
-        <!-- <img src="https://th.bing.com/th/id/OIP.-OPKgr-pMLc3cyqxPE-ySAHaHa?w=185&h=184&c=7&r=0&o=5&dpr=2.2&pid=1.7 " alt=""> -->
-        <!-- <h2>congratulations!!!</h2> -->
-
-        <!-- <p>I hope you are enjoying this is!</p> -->
         <table id="tbl">
             <tr>
                 <td><input type="number" value="11"></td>
@@ -46,13 +49,11 @@
                 <td><input type="number" value="28"></td>
             </tr>
         </table><br>
-        <button type="button" style="height: 30px" onclick="window.location.href='home.html'">Go»</button>
+        <button type="button" style="height: 30px" onclick="insert_data()">Go»</button>
     </div>
-    <button onclick="fun()" >Start</button>
+
     <script>
-        function fun(){
-    popup.classList.add("open-popup");
-}
+        function fun1(){popup.classList.add("open-popup");}
     </script>
 <script src="main.js"></script>
 </body>

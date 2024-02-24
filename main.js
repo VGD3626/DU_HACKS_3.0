@@ -33,7 +33,7 @@ function insert_data(){
         }
         pjmatrix.push(r);
     }
-    console.log(pjmatrix);
+    window.location.href = "home2.html";
 }
 
 class Node {
@@ -133,5 +133,13 @@ function branch_and_bound(){
                 pq.push(Child);
             }
         }
+    }
+}
+
+//this function is set delay of time
+function customDelay(milliseconds) {
+    const start = new Date().getTime();
+    while (new Date().getTime() - start < milliseconds) {
+        // Busy loop to pause execution
     }
 }
