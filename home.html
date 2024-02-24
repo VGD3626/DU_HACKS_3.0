@@ -3,38 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
     <title>Document</title>
 </head>
 <body>
-    <input type="number" id="in" value="4">
-    <button onclick="print_mat()">Done</button>
-    <table id="tbl">
-        <tr>
-            <td><input type="number" value="11"></td>
-            <td><input type="number" value="12"></td>
-            <td><input type="number" value="18"></td>
-            <td><input type="number" value="40"></td>
-        </tr>
-        <tr>
-            <td><input type="number" value="14"></td>
-            <td><input type="number" value="15"></td>
-            <td><input type="number" value="13"></td>
-            <td><input type="number" value="22"></td>
-        </tr>
-        <tr>
-            <td><input type="number" value="11"></td>
-            <td><input type="number" value="17"></td>
-            <td><input type="number" value="19"></td>
-            <td><input type="number" value="23"></td>
-        </tr>
-        <tr>
-            <td><input type="number" value="17"></td>
-            <td><input type="number" value="14"></td>
-            <td><input type="number" value="20"></td>
-            <td><input type="number" value="28"></td>
-        </tr>
-    </table>
-    <button onclick="insert_data()">Enter</button>
+    <!-- <input type="number" id="in" value="4"> -->
+    <!-- <button onclick="print_mat()">Done</button> -->
+    
+    <div class="popup" id="popup">
+        <input type="number" id="in" value="4">
+        <button onclick="print_mat()">Done</button>
+        <!-- <img src="https://th.bing.com/th/id/OIP.-OPKgr-pMLc3cyqxPE-ySAHaHa?w=185&h=184&c=7&r=0&o=5&dpr=2.2&pid=1.7 " alt=""> -->
+        <!-- <h2>congratulations!!!</h2> -->
+
+        <!-- <p>I hope you are enjoying this is!</p> -->
+        <table id="tbl">
+            <tr>
+                <td><input type="number" value="11"></td>
+                <td><input type="number" value="12"></td>
+                <td><input type="number" value="18"></td>
+                <td><input type="number" value="40"></td>
+            </tr>
+            <tr>
+                <td><input type="number" value="14"></td>
+                <td><input type="number" value="15"></td>
+                <td><input type="number" value="13"></td>
+                <td><input type="number" value="22"></td>
+            </tr>
+            <tr>
+                <td><input type="number" value="11"></td>
+                <td><input type="number" value="17"></td>
+                <td><input type="number" value="19"></td>
+                <td><input type="number" value="23"></td>
+            </tr>
+            <tr>
+                <td><input type="number" value="17"></td>
+                <td><input type="number" value="14"></td>
+                <td><input type="number" value="20"></td>
+                <td><input type="number" value="28"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="window.location.href='home.html'">Home</button>
+    </div>
+    <button onclick="fun()">Enter</button>
 <script src="main.js"></script>
 </body>
 </html>
