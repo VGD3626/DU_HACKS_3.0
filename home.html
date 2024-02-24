@@ -11,8 +11,11 @@
     <!-- <button onclick="print_mat()">Done</button> -->
     
     <div class="popup" id="popup">
-        <input type="number" id="in" value="4">
-        <button onclick="print_mat()">Done</button>
+        <h2>Give number of Job's</h2>
+        <input type="number" id="in" value="4" style="border-color: rgba(88, 247, 30, 0.643)">
+        <button onclick="print_mat()">✓</button>
+        <br>
+        <h2>Enter Person-Job:</h2>
         <!-- <img src="https://th.bing.com/th/id/OIP.-OPKgr-pMLc3cyqxPE-ySAHaHa?w=185&h=184&c=7&r=0&o=5&dpr=2.2&pid=1.7 " alt=""> -->
         <!-- <h2>congratulations!!!</h2> -->
 
@@ -42,10 +45,15 @@
                 <td><input type="number" value="20"></td>
                 <td><input type="number" value="28"></td>
             </tr>
-        </table>
-        <button type="button" onclick="window.location.href='home.html'">Home</button>
+        </table><br>
+        <button type="button" style="height: 30px" onclick="window.location.href='home.html'">Go»</button>
     </div>
-    <button onclick="fun()">Enter</button>
+    <button onclick="fun()" >Start</button>
+    <script>
+        function fun(){
+    popup.classList.add("open-popup");
+}
+    </script>
 <script src="main.js"></script>
 </body>
 </html>
