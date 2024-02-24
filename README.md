@@ -1,3 +1,6 @@
+# Algo_Experts
+## Job Assignment Problem Using Branch and Bound
+
 Hey there!
 Here is the description about our project!
 We have created a visualizor for "job assignment Problem" using Branch and Bound Technique...
@@ -9,8 +12,9 @@ The job assignment problem deals with assigning machines to tasks, workers to jo
 Assume for example that we have four jobs that need to be executed by four workers. Because each worker has different skills, the time required to perform a job depends on the worker who is assigned to it.
 The matrix below shows the time required (in minutes) for each combination of a worker and a job. The jobs are denoted by J1, J2, J3, and J4, the workers by W1, W2, W3, and W4.
 
+## Example
 ```
-PJ  J1	J2	J3	J4
+WJ      J1	J2	J3	J4
 W1	82	83	69	92
 W2	77	37	49	92
 W3	11	69	05	86
@@ -21,5 +25,5 @@ It turns out to be optimal to assign worker 1 to job 3, worker 2 to job 2, worke
 time required is then 69 + 37 + 11 + 23 = 140 minutes. All other assignments lead to a larger amount of time required.
 
 ---------------------------------------------------------------------------------------------------------------------------------
-
+## Pros of using Branch and Bound
 Now, where bruteforce takes running time of O(n!), this algorithm reduces the time complexity significantly...
