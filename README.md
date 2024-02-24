@@ -10,11 +10,11 @@ Assume for example that we have four jobs that need to be executed by four worke
 The matrix below shows the time required (in minutes) for each combination of a worker and a job. The jobs are denoted by J1, J2, J3, and J4, the workers by W1, W2, W3, and W4.
 
 ```
-J1	J2	J3	J4
+PJ  J1	J2	J3	J4
 W1	82	83	69	92
 W2	77	37	49	92
-W3	11	69	5	86
-W4	8	9	98	23
+W3	11	69	05	86
+W4	08	09	98	23
 ```
 Each worker should perform exactly one job and the objective is to minimize the total time required to perform all jobs.
 It turns out to be optimal to assign worker 1 to job 3, worker 2 to job 2, worker 3 to job 1 and worker 4 to job 4. The total 
