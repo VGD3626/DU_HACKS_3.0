@@ -17,6 +17,7 @@ W4	8	9	98	23
 Each worker should perform exactly one job and the objective is to minimize the total time required to perform all jobs.
 It turns out to be optimal to assign worker 1 to job 3, worker 2 to job 2, worker 3 to job 1 and worker 4 to job 4. The total 
 time required is then 69 + 37 + 11 + 23 = 140 minutes. All other assignments lead to a larger amount of time required.
+
 ---------------------------------------------------------------------------------------------------------------------------------
 
 Now, where bruteforce takes running time of O(n!), this algorithm reduces the time complexity significantly...
