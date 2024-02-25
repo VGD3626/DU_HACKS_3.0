@@ -97,12 +97,14 @@ function find_min(){
     return ret;
 }
 
+
 var pq = [];
 function branch_and_bound(){
     const assign = new Array(n).fill(false);
     const root = new Node(null, -1, -1, assign);
     pq = [];
     pq.push(root);
+
     while(pq.length != 0){
         var min = find_min();
         let t = pq.indexOf(min); //get index of min
