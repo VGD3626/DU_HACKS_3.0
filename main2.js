@@ -1,7 +1,6 @@
 var pjmatrix = [];
 var pq = [];
 var n=0;
-var cell_arr = [];
 
 class Node {
     constructor(p, j, e, a) {
@@ -70,21 +69,22 @@ async function branch_and_bound(){
     const root = new Node(null, -1, -1, assign);
     pq = [];
     pq.push(root);
-    visualizePop();
-    await new Promise(resolve=>setTimeout(resolve,2000));
+    visualizeArray();
+
     while(pq.length != 0){
         var min = find_min();
-        let t = pq.indexOf(min); //get index of min
-        pq.splice(t, 1); // remove a element from an array
         var i = min.person + 1;
-        visualizePop();
-        await new Promise(resolve=>setTimeout(resolve,2000));
+        let t = pq.indexOf(min); //get index of min
+        visualizePop(pq[t]);
+        pq.splice(t, 1); // remove a element from an array
+        visualizeArray();
 
         if(i == n){
             print(min);
             console.log(min.cost);
             return;
         }
+        await new Promise(resolve=>setTimeout(resolve,2000));
 
         for(let j=0; j<n ;j++){
             if(min.assign[j] == false){
@@ -102,10 +102,17 @@ async function branch_and_bound(){
                 Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(j, i, new_assign));
                 //console.log(Child.cost);
                 pq.push(Child);
-                visualizePop();
+                addNode(Child);
                 await new Promise(resolve=>setTimeout(resolve,2000));
             }
         }
+        visualizeArray();
+        let area2 = document.getElementById("childNode");
+        area2.innerText = '';
+        await new Promise(resolve=>setTimeout(resolve,2000));
+        var area1 = document.getElementById("currentNode");
+        area1.innerText = '';
+        await new Promise(resolve=>setTimeout(resolve,2000));
     }
 }
 
@@ -129,42 +136,7 @@ extract_data();
 console.log(pjmatrix);
 console.log(n);
 
-print_matrix();
-
-//table mate na functions
-function print_matrix(){
-    var tbl = document.getElementById('tbl');
-    //first row for j1 j2 j3
-    let row = document.createElement('tr');
-    row.appendChild(document.createElement('th'));//khali box mate
-    for(let k=1;k<=n;k++){
-        let Th = document.createElement('th');
-        Th.innerHTML = 'J'+k;
-        row.appendChild(Th);
-    }
-    tbl.appendChild(row);
-
-    var arr =  [];
-    for(let i=0;i<n;i++){
-        let row = document.createElement('tr');
-        let Th = document.createElement('th');
-        Th.innerHTML = 'W'+ parseInt(i+1);
-        row.appendChild(Th);
-
-        var row2 = []// for addig cell dont confuse
-        for(let j=0;j<n;j++){
-            let data = document.createElement('td');
-            data.innerHTML = pjmatrix[i][j];
-            row.appendChild(data);
-            row2.push(data);
-        }
-        cell_arr.push(row2);
-        tbl.appendChild(row);
-    }
-    
-}
-
-function visualizePop() {
+function visualizeArray() {
     var arrayDiv = document.getElementById("array");
     arrayDiv.innerHTML = '';
     for(let i=0;i<pq.length;i++){
@@ -174,4 +146,22 @@ function visualizePop() {
       card.innerText = popped.cost;
       arrayDiv.appendChild(card);
     }
-  }
+}
+
+
+function visualizePop(Node){
+    var area = document.getElementById("currentNode");
+    area.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerText = Node.cost;
+    area.appendChild(card);
+}
+
+function addNode(child){
+    var area = document.getElementById("childNode");
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerText = child.cost;
+    area.appendChild(card);
+}
