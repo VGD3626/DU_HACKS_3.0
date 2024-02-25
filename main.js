@@ -33,7 +33,7 @@ function insert_data(){
         }
         pjmatrix.push(r);
     }
-    window.location.href = "home2.html";
+    window.location.href = `home2.html?pjmatrix=${encodeURIComponent(pjmatrix)}`;
 }
 
 class Node {
@@ -136,10 +136,20 @@ function branch_and_bound(){
     }
 }
 
-//this function is set delay of time
-function customDelay(milliseconds) {
-    const start = new Date().getTime();
-    while (new Date().getTime() - start < milliseconds) {
-        // Busy loop to pause execution
+function extract_data(){
+    const params = new URLSearchParams(window.location.search);
+    const str = params.get('pjmatrix');
+    var matrix = str.split(',');
+    // console.log(matrix);
+    const n = Math.sqrt(matrix.length);
+    // console.log(n);
+    
+    for(let i=0;i<n;i++){
+        var r = [];
+        for(let j=0;j<n;j++){
+            r.push(parseInt(matrix[n*i + j]));
+        }
+        pjmatrix.push(r);
     }
+    console.log(pjmatrix);
 }
