@@ -116,7 +116,7 @@ function branch_and_bound(){
         }
 
         for(let j=0; j<n ;j++){
-            if(min.assign[j] == false){
+            if(min.assign[j] == false) {
                 var new_assign = new Array(n);
 
                 // deep copy of assign
