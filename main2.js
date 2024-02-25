@@ -64,16 +64,20 @@ function find_min(){
 }
 
 
-function branch_and_bound(){
+async function branch_and_bound(){
     const assign = new Array(n).fill(false);
     const root = new Node(null, -1, -1, assign);
     pq = [];
     pq.push(root);
+    visualizePop();
+    await new Promise(resolve=>setTimeout(resolve,2000));
     while(pq.length != 0){
         var min = find_min();
         let t = pq.indexOf(min); //get index of min
         pq.splice(t, 1); // remove a element from an array
         var i = min.person + 1;
+        visualizePop();
+        await new Promise(resolve=>setTimeout(resolve,2000));
 
         if(i == n){
             print(min);
@@ -97,6 +101,8 @@ function branch_and_bound(){
                 Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(j, i, new_assign));
                 //console.log(Child.cost);
                 pq.push(Child);
+                visualizePop();
+                await new Promise(resolve=>setTimeout(resolve,2000));
             }
         }
     }
@@ -121,3 +127,15 @@ function extract_data(){
 extract_data();
 console.log(pjmatrix);
 console.log(n);
+
+function visualizePop() {
+    var arrayDiv = document.getElementById("array");
+    arrayDiv.innerHTML = '';
+    for(let i=0;i<pq.length;i++){
+      const popped = pq[i];
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerText = popped.cost;
+      arrayDiv.appendChild(card);
+    }
+  }
