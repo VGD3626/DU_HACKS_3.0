@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .partition {
+            margin-bottom: 20px;
+        }
+        #tbl td,th{
+            text-align: center;
+            border-radius: 17%;
+            border-style: none;
+            box-shadow: 2px 2px 2px rgba(136, 136, 136, 0.599);
+        }
+        .block{
+            background-color: rgba(89, 89, 89, 0.741);
+            box-shadow: none;
+            border-radius: 0%;
+        }
+        .mincell{
+            background-color: rgba(255, 0, 0, 0.801);
+        }
+        #tbl{
+            width: 100%;
+            height: 25%;
+        }
+        th{
+            background-color:rgba(157, 150, 232, 0.649);
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row">
+            
+            <div class="col-md-4 partition" style="background-color: rgb(243, 242, 253); height: 1000px;">
+                <h3>Job Assignment matrix</h3><br>
+                <table id = "tbl" style="margin-top: 23%;"></table>
+            </div>
+            
+            <div class="col-md-5 partition">
+                <h3>Current Node</h3><br>
+                <h5>Root Node</h5><br>
+                <div id="currentNode"></div><br><br>
+                <h5>Child Nodes</h5><br>
+                <div id="childNode">
+                    
+                </div>
+            </div>
+
+            <div id="liveNodes" class="col-md-3 partition" style="background-color: rgb(228, 246, 255); height: 100000px;">
+                <h3>List of live nodes</h3><br>
+                <div id="array">
+                </div>   
+            </div>
+
+        </div>
+    </div>
+
+    <script src="main2.js"></script>
+</body>
+
+</html>
