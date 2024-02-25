@@ -10,86 +10,56 @@
         .partition {
             margin-bottom: 20px;
         }
+        #tbl td,th{
+            text-align: center;
+            border-radius: 17%;
+            border-style: none;
+            box-shadow: 2px 2px 2px rgba(136, 136, 136, 0.599);
+        }
+        .block{
+            background-color: rgba(89, 89, 89, 0.741);
+            box-shadow: none;
+            border-radius: 0%;
+        }
+        .mincell{
+            background-color: rgba(255, 0, 0, 0.801);
+        }
+        #tbl{
+            width: 100%;
+            height: 25%;
+        }
+        th{
+            background-color:rgba(157, 150, 232, 0.649);
+        }
+        
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid p-0">
         <div class="row">
             
-
             <div class="col-md-4 partition" style="background-color: rgb(243, 242, 253); height: 1000px;">
                 <h3>Job Assignment matrix</h3><br>
-                <table id="tbl" class="table table-bordered table-sm shadow" style="background-color: rgb(229, 227, 251);">
-                    <tr>
-                        <td></td>
-                        <td>Job2</td>
-                        <td>Job3</td>
-                        <td>Job4</td>
-                    </tr>
-                    <tr>
-                        <td>worker1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>worker2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>worker3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>worker4</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                </table>
+                <table id = "tbl" style="margin-top: 23%;"></table>
             </div>
             
-
-
             <div class="col-md-5 partition">
                 <h3>Current Node</h3><br>
-                <div class="card shadow w-50" style="background-color: rgb(143, 255, 169); border-radius: 0;">
-                    <div class="card-body">
-                        <div class="row">
-                              <p class="mb-0">worker</p>
-                        </div>
-                        <div class="row">
-                              <p class="mb-0">parent</p>
-                        </div>
-                        <div class="row">
-                            <p class="mb-0">cost</p>
-                        </div>
-                    </div>
+                <h5>Root Node</h5><br>
+                <div id="currentNode"></div><br><br>
+                <h5>Child Nodes</h5><br>
+                <div id="childNode">
+                    
                 </div>
             </div>
 
-
-            <div class="col-md-3 partition" style="background-color: rgb(228, 246, 255); height: 1000px;">
+            <div id="liveNodes" class="col-md-3 partition" style="background-color: rgb(228, 246, 255); height: 100000px;">
                 <h3>List of live nodes</h3><br>
-                <div class="card shadow w-75" style="background-color: rgb(208, 238, 254); border-radius: 0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <p class="mb-0">worker</p>
-                      </div>
-                      <div class="row">
-                            <p class="mb-0">parent</p>
-                      </div>
-                      <div class="row">
-                          <p class="mb-0">cost</p>
-                      </div>
-                    </div>
-                </div>
+                <div id="array">
+                </div>   
             </div>
+
         </div>
     </div>
 
