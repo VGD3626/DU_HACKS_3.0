@@ -34,25 +34,48 @@ function fun(){
     // console.log(nn);
 }
 
-function clac_cost(j,p,assign){
+async function clac_cost(j,p,assign){
     var cost = 0;
-    for(let i=p+1;i<n;i++){  // pela p 
+    for(let i=0;i<=j;i++){
+        for(let k=0;k<n;k++){
+            cell_arr[k][i].classList.add('block');
+        }
+    }
+    let tem = [];//for remove mincell class
+    for(let i=j+1;i<n;i++){
         var min=Infinity,minidx=-1;
         for(let k=0;k<n;k++){
-            if(assign[k]==false && pjmatrix[i][k] < min){ // here i-k
+            if(assign[k]==false && pjmatrix[k][i] < min){
                 minidx = k;
-                min = pjmatrix[i][k];
-                console.log(pjmatrix[i][k] + ' ' + min);
+                min = pjmatrix[k][i];
+                console.log(pjmatrix[k][i] + ' ' + min);
             }
         }
-        console.log(min);
         cost = parseInt(cost) + parseInt(min);
-        console.log('sarvalo'+cost);
+        cell_arr[minidx][i].classList.add('mincell');
+        tem.push(minidx);
+        // await new Promise(resolve => setTimeout(resolve, ms));
+        await customDelay(1000);
+        
     }
     console.log('return'+cost);
+    
+    /// sli kreli
+    for(let i=0;i<=j;i++){
+        for(let k=0;k<n;k++){
+            cell_arr[k][i].classList.remove('block');
+        }
+    }
+    for(let i=j+1;i<n;i++){
+        cell_arr[tem[i-j-1]][i].classList.remove('mincell');
+    }
     return cost;
 }
 
+
+async function customDelay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 function find_min(){
     var len = pq.length;
     var ret = pq[0];
@@ -70,15 +93,15 @@ async function branch_and_bound(){
     const root = new Node(null, -1, -1, assign);
     pq = [];
     pq.push(root);
-    visualizePop();
-    await new Promise(resolve=>setTimeout(resolve,2000));
+    // visualizePop();
+    // await new Promise(resolve=>setTimeout(resolve,2000));
     while(pq.length != 0){
         var min = find_min();
         let t = pq.indexOf(min); //get index of min
         pq.splice(t, 1); // remove a element from an array
-        var i = min.person + 1;
-        visualizePop();
-        await new Promise(resolve=>setTimeout(resolve,2000));
+        var i = min.job + 1;
+        // visualizePop();
+        // await new Promise(resolve=>setTimeout(resolve,2000));
 
         if(i == n){
             print(min);
@@ -94,16 +117,14 @@ async function branch_and_bound(){
                 for(let x=0; x<n; x++){
                     new_assign[x] = min.assign[x];
                 }
-                console.log(new_assign);
-                console.log(min.assign);
                 new_assign[j] = true;
-                var Child = new Node(min, j, i, new_assign);
-                Child.pathcost = parseInt(min.pathcost) + parseInt(pjmatrix[i][j]);
-                Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(j, i, new_assign));
+                var Child = new Node(min, i, j, new_assign);
+                Child.pathcost = parseInt(min.pathcost) + parseInt(pjmatrix[j][i]);
+                Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(i, j, new_assign));
                 //console.log(Child.cost);
                 pq.push(Child);
-                visualizePop();
-                await new Promise(resolve=>setTimeout(resolve,2000));
+                // visualizePop();
+                // await new Promise(resolve=>setTimeout(resolve,2000));
             }
         }
     }
