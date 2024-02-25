@@ -35,13 +35,13 @@ function fun(){
 
 function clac_cost(j,p,assign){
     var cost = 0;
-    for(let i=p+1;i<n;i++){  // pela p 
+    for(let i=j+1;i<n;i++){  // pela p 
         var min=Infinity,minidx=-1;
         for(let k=0;k<n;k++){
-            if(assign[k]==false && pjmatrix[i][k] < min){ // here i-k
+            if(assign[k]==false && pjmatrix[k][i] < min){ // here i-k
                 minidx = k;
-                min = pjmatrix[i][k];
-                console.log(pjmatrix[i][k] + ' ' + min);
+                min = pjmatrix[k][i];
+                console.log(pjmatrix[k][i] + ' ' + min);
             }
         }
         console.log(min);
@@ -73,7 +73,7 @@ async function branch_and_bound(){
 
     while(pq.length != 0){
         var min = find_min();
-        var i = min.person + 1;
+        var i = min.job + 1;
         let t = pq.indexOf(min); //get index of min
         visualizePop(pq[t]);
         pq.splice(t, 1); // remove a element from an array
@@ -97,9 +97,9 @@ async function branch_and_bound(){
                 console.log(new_assign);
                 console.log(min.assign);
                 new_assign[j] = true;
-                var Child = new Node(min, j, i, new_assign);
-                Child.pathcost = parseInt(min.pathcost) + parseInt(pjmatrix[i][j]);
-                Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(j, i, new_assign));
+                var Child = new Node(min, i, j, new_assign);
+                Child.pathcost = parseInt(min.pathcost) + parseInt(pjmatrix[j][i]);
+                Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(i, j, new_assign));
                 //console.log(Child.cost);
                 pq.push(Child);
                 addNode(Child);
