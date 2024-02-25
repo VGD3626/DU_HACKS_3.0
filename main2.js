@@ -36,9 +36,14 @@ function fun(){
 
 async function clac_cost(j,p,assign){
     var cost = 0;
-    for(let i=0;i<=j;i++){
-        for(let k=0;k<n;k++){
-            cell_arr[k][i].classList.add('block');
+    for(let i=0;i<n;i++){
+        for(let k=0;k<=j;k++){
+            cell_arr[i][k].classList.add('block');
+        }
+        if(assign[i] == true){
+            for(let k=0;k<n;k++){
+                cell_arr[i][k].classList.add('block');
+            }
         }
     }
     let tem = [];//for remove mincell class
@@ -59,11 +64,15 @@ async function clac_cost(j,p,assign){
         
     }
     console.log('return'+cost);
-    
-    /// sli kreli
-    for(let i=0;i<=j;i++){
-        for(let k=0;k<n;k++){
-            cell_arr[k][i].classList.remove('block');
+
+    for(let i=0;i<n;i++){
+        for(let k=0;k<=j;k++){
+            cell_arr[i][k].classList.remove('block');
+        }
+        if(assign[i] == true){
+            for(let k=0;k<n;k++){
+                cell_arr[i][k].classList.remove('block');
+            }
         }
     }
     for(let i=j+1;i<n;i++){
