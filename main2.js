@@ -39,13 +39,13 @@ function fun(){
 
 function clac_cost(j,p,assign){
     var cost = 0;
-    for(let i=j+1;i<n;i++){  // pela p 
+    for(let i=p+1;i<n;i++){  // pela p 
         var min=Infinity,minidx=-1;
         for(let k=0;k<n;k++){
-            if(assign[k]==false && pjmatrix[k][i] < min){ // here i-k
+            if(assign[k]==false && pjmatrix[i][k] < min){ // here i-k
                 minidx = k;
-                min = pjmatrix[k][i];
-                console.log(pjmatrix[k][i] + ' ' + min);
+                min = pjmatrix[i][k];
+                console.log(pjmatrix[i][k] + ' ' + min);
             }
         }
         console.log(min);
@@ -73,22 +73,21 @@ async function branch_and_bound(){
     const root = new Node(null, -1, -1, assign);
     pq = [];
     pq.push(root);
-    visualizeArray();
-
+    visualizePop();
+    await new Promise(resolve=>setTimeout(resolve,2000));
     while(pq.length != 0){
         var min = find_min();
-        var i = min.job + 1;
         let t = pq.indexOf(min); //get index of min
-        visualizePop(pq[t]);
         pq.splice(t, 1); // remove a element from an array
-        visualizeArray();
+        var i = min.person + 1;
+        visualizePop();
+        await new Promise(resolve=>setTimeout(resolve,2000));
 
         if(i == n){
             print(min);
             console.log(min.cost);
             return;
         }
-        await new Promise(resolve=>setTimeout(resolve,2000));
 
         for(let j=0; j<n ;j++){
             if(min.assign[j] == false){
@@ -101,22 +100,15 @@ async function branch_and_bound(){
                 console.log(new_assign);
                 console.log(min.assign);
                 new_assign[j] = true;
-                var Child = new Node(min, i, j, new_assign);
-                Child.pathcost = parseInt(min.pathcost) + parseInt(pjmatrix[j][i]);
-                Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(i, j, new_assign));
+                var Child = new Node(min, j, i, new_assign);
+                Child.pathcost = parseInt(min.pathcost) + parseInt(pjmatrix[i][j]);
+                Child.cost = parseInt(Child.pathcost) + parseInt(clac_cost(j, i, new_assign));
                 //console.log(Child.cost);
                 pq.push(Child);
-                addNode(Child);
+                visualizePop();
                 await new Promise(resolve=>setTimeout(resolve,2000));
             }
         }
-        visualizeArray();
-        let area2 = document.getElementById("childNode");
-        area2.innerText = '';
-        await new Promise(resolve=>setTimeout(resolve,2000));
-        var area1 = document.getElementById("currentNode");
-        area1.innerText = '';
-        await new Promise(resolve=>setTimeout(resolve,2000));
     }
 }
 
@@ -140,7 +132,7 @@ extract_data();
 console.log(pjmatrix);
 console.log(n);
 
-function visualizeArray() {
+function visualizePop() {
     var arrayDiv = document.getElementById("array");
     arrayDiv.innerHTML = '';
     for(let i=0;i<pq.length;i++) {
@@ -180,7 +172,7 @@ function visualizeArray() {
         for(let i=0;i<arr.length;i++) {
             let jo = document.createElement('td');
             if(arr[i][0] != undefined)
-                jo.innerText = arr[i][1]+1;
+                jo.innerText = arr[i][1];
             personr.appendChild(jo);
             console.log(typeof(arr[i][1]));
         }
@@ -194,22 +186,4 @@ function visualizeArray() {
       card.appendChild(cardBody);
       arrayDiv.appendChild(card);
     }
-}
-
-
-function visualizePop(Node){
-    var area = document.getElementById("currentNode");
-    area.innerHTML = '';
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerText = Node.cost;
-    area.appendChild(card);
-}
-
-function addNode(child){
-    var area = document.getElementById("childNode");
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerText = child.cost;
-    area.appendChild(card);
-}
+  }
