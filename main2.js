@@ -1,6 +1,7 @@
 var pjmatrix = [];
 var pq = [];
 var n=0;
+var cell_arr = [];
 
 class Node {
     constructor(p, j, e, a) {
@@ -127,6 +128,41 @@ function extract_data(){
 extract_data();
 console.log(pjmatrix);
 console.log(n);
+
+print_matrix();
+
+//table mate na functions
+function print_matrix(){
+    var tbl = document.getElementById('tbl');
+    //first row for j1 j2 j3
+    let row = document.createElement('tr');
+    row.appendChild(document.createElement('th'));//khali box mate
+    for(let k=1;k<=n;k++){
+        let Th = document.createElement('th');
+        Th.innerHTML = 'J'+k;
+        row.appendChild(Th);
+    }
+    tbl.appendChild(row);
+
+    var arr =  [];
+    for(let i=0;i<n;i++){
+        let row = document.createElement('tr');
+        let Th = document.createElement('th');
+        Th.innerHTML = 'W'+ parseInt(i+1);
+        row.appendChild(Th);
+
+        var row2 = []// for addig cell dont confuse
+        for(let j=0;j<n;j++){
+            let data = document.createElement('td');
+            data.innerHTML = pjmatrix[i][j];
+            row.appendChild(data);
+            row2.push(data);
+        }
+        cell_arr.push(row2);
+        tbl.appendChild(row);
+    }
+    
+}
 
 function visualizePop() {
     var arrayDiv = document.getElementById("array");
