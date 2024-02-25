@@ -10,16 +10,6 @@
         .partition {
             margin-bottom: 20px;
         }
-        #tbl td,th{
-            text-align: center;
-            border-radius: 14%;
-            border-style: none;
-            box-shadow: 1px 1px 1px rgba(136, 136, 136, 0.599);
-        }
-        table{
-            width: 100%;
-            height: 25%;
-        }
     </style>
 </head>
 
@@ -30,44 +20,57 @@
 
             <div class="col-md-4 partition" style="background-color: rgb(243, 242, 253); height: 1000px;">
                 <h3>Job Assignment matrix</h3><br>
-                <table id = "tbl" style="margin-top: 23%;"></table>
+                <table id="tbl" class="table table-bordered table-sm shadow" style="background-color: rgb(229, 227, 251);">
+                    <tr>
+                        <td></td>
+                        <td>Job2</td>
+                        <td>Job3</td>
+                        <td>Job4</td>
+                    </tr>
+                    <tr>
+                        <td>worker1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>worker2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>worker3</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>worker4</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </table>
             </div>
             
 
 
-            <div class="col-md-5 partition">
+            <div class="col-md-5 partition"><br>
                 <h3>Current Node</h3><br>
-                <div class="card shadow w-50" style="background-color: rgb(143, 255, 169); border-radius: 0;">
-                    <div class="card-body">
-                        <div class="row">
-                              <p class="mb-0">worker</p>
-                        </div>
-                        <div class="row">
-                              <p class="mb-0">parent</p>
-                        </div>
-                        <div class="row">
-                            <p class="mb-0">cost</p>
-                        </div>
-                    </div>
+                <h5>Root Node</h5><br>
+                <div id="currentNode" class="card shadow w-50" style="background-color: rgb(143, 255, 169); border-radius: 0;">
+                </div><br><br>
+                <h5>Child Node</h5><br>
+                <div id="childNode" class="card shadow w-50" style="background-color: rgb(143, 255, 169); border-radius: 0;">
                 </div>
             </div>
 
 
             <div class="col-md-3 partition" style="background-color: rgb(228, 246, 255); height: 1000px;">
                 <h3>List of live nodes</h3><br>
-                <div class="card shadow w-75" style="background-color: rgb(208, 238, 254); border-radius: 0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <p class="mb-0">worker</p>
-                      </div>
-                      <div class="row">
-                            <p class="mb-0">parent</p>
-                      </div>
-                      <div class="row">
-                          <p class="mb-0">cost</p>
-                      </div>
-                    </div>
-                </div>
+                <div id="array">
+                </div>   
             </div>
         </div>
     </div>
