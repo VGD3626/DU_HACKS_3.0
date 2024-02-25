@@ -19,7 +19,12 @@ var arr = [[]];
 function print(min) {
     if(min.parent == null) {
         arr = [[]];
+var arr = [[]];
+function print(min) {
+    if(min.parent == null) {
+        arr = [[]];
         return;
+    }
     }
     print(min.parent);
     // console.log('Employee '+ parseInt(min.person+1) + 'have ' + parseInt(min.job+1));
@@ -42,6 +47,7 @@ async function clac_cost(j,p,assign){
     for(let i=j+1;i<n;i++){
         var min=Infinity,minidx=-1;
         for(let k=0;k<n;k++){
+            if(assign[k]==false && pjmatrix[k][i] < min){
             if(assign[k]==false && pjmatrix[k][i] < min){
                 minidx = k;
                 min = pjmatrix[k][i];
@@ -69,6 +75,10 @@ async function clac_cost(j,p,assign){
     }
 }
 
+
+async function customDelay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 function find_min(){
     var len = pq.length;
     var ret = pq[0];
@@ -81,6 +91,7 @@ function find_min(){
 }
 
 
+async function branch_and_bound(){
 async function branch_and_bound(){
     const assign = new Array(n).fill(false);
     const root = new Node(null, -1, -1, assign);
