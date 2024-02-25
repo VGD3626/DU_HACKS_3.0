@@ -34,51 +34,34 @@
     </style>
 </head>
 
-<body>
+<body class="ml-auto">
     <div class="container-fluid p-0">
+        <div class="row" style="background-color: rgb(218, 218, 218); font-weight: 500;"><H1> ALGORITHM FOR JOB ASSIGNEMENT PROBLEM</H1><BR><BR></div>
         <div class="row">
             
 
-            <div class="col-md-4 partition" style="background-color: rgb(243, 242, 253); height: 1000px;">
+            <div class="col-md-4 partition" style="background-color: rgb(243, 242, 253); height: 100000px;">
                 <h3>Job Assignment matrix</h3><br>
-                <table id = "tbl" style="margin-top: 23%;"></table>
+                
             </div>
             
 
 
             <div class="col-md-5 partition">
                 <h3>Current Node</h3><br>
-                <div class="card shadow w-50" style="background-color: rgb(143, 255, 169); border-radius: 0;">
-                    <div class="card-body">
-                        <div class="row">
-                              <p class="mb-0">worker</p>
-                        </div>
-                        <div class="row">
-                              <p class="mb-0">parent</p>
-                        </div>
-                        <div class="row">
-                            <p class="mb-0">cost</p>
-                        </div>
-                    </div>
+                <h5>Root Node</h5><br>
+                <div id="currentNode"></div><br><br>
+                <h5>Child Node</h5><br>
+                <div id="childNode" class="card shadow w-50" style="background-color: rgb(143, 255, 169); border-radius: 0;">
+                    
                 </div>
             </div>
 
 
-            <div class="col-md-3 partition" style="background-color: rgb(228, 246, 255); height: 1000px;">
-                <h3>List of live nodes</h3><br>
-                <div class="card shadow w-75" style="background-color: rgb(208, 238, 254); border-radius: 0;">
-                    <div class="card-body">
-                        <div class="row">
-                            <p class="mb-0">worker</p>
-                      </div>
-                      <div class="row">
-                            <p class="mb-0">parent</p>
-                      </div>
-                      <div class="row">
-                          <p class="mb-0">cost</p>
-                      </div>
-                    </div>
-                </div>
+            <div id="liveNodes" class="col-md-3 partition" style="background-color: rgb(228, 246, 255); height: 100000px;">
+                <h3 style="color: blueviolet;">List of live nodes</h3><br>
+                <div id="array">
+                </div>   
             </div>
         </div>
     </div>

@@ -1,7 +1,6 @@
 var pjmatrix = [];
 var pq = [];
 var n=0;
-var cell_arr = [];
 
 class Node {
     constructor(p, j, e, a) {
@@ -14,11 +13,15 @@ class Node {
     }
 }
 
-function print(min){
-    if(min.parent == null)
+var arr = [[]];
+function print(min) {
+    if(min.parent == null) {
+        arr = [[]];
         return;
+    }
     print(min.parent);
     console.log('Employee '+ parseInt(min.person+1) + 'have ' + parseInt(min.job+1));
+    arr.push([min.job, min.person]);
 }
 
 function fun(){
@@ -159,49 +162,58 @@ extract_data();
 console.log(pjmatrix);
 console.log(n);
 
-print_matrix();
-
-//table mate na functions
-function print_matrix(){
-    var tbl = document.getElementById('tbl');
-    //first row for j1 j2 j3
-    let row = document.createElement('tr');
-    row.appendChild(document.createElement('th'));//khali box mate
-    for(let k=1;k<=n;k++){
-        let Th = document.createElement('th');
-        Th.innerHTML = 'J'+k;
-        row.appendChild(Th);
-    }
-    tbl.appendChild(row);
-
-    var arr =  [];
-    for(let i=0;i<n;i++){
-        let row = document.createElement('tr');
-        let Th = document.createElement('th');
-        Th.innerHTML = 'W'+ parseInt(i+1);
-        row.appendChild(Th);
-
-        var row2 = []// for addig cell dont confuse
-        for(let j=0;j<n;j++){
-            let data = document.createElement('td');
-            data.innerHTML = pjmatrix[i][j];
-            row.appendChild(data);
-            row2.push(data);
-        }
-        cell_arr.push(row2);
-        tbl.appendChild(row);
-    }
-    
-}
-
 function visualizePop() {
     var arrayDiv = document.getElementById("array");
     arrayDiv.innerHTML = '';
-    for(let i=0;i<pq.length;i++){
+    for(let i=0;i<pq.length;i++) {
       const popped = pq[i];
       const card = document.createElement('div');
-      card.className = 'card';
-      card.innerText = popped.cost;
+      card.className = 'card shadow w-75 m-2';
+      card.style.backgroundColor = 'rgb(213, 241, 255)';
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+      const cardRow1 = document.createElement('div');
+      cardRow1.className = 'row';
+      cardRow1.innerText = 'cost: ' + popped.cost;
+
+      const cardRow2 = document.createElement('div'); 
+      cardRow2.className = 'row';
+
+      JP = document.createElement('table');
+      const jobr = document.createElement('tr');
+      const jobh = document.createElement('th');
+      jobh.innerText = 'Job';
+      jobr.appendChild(jobh);
+      const personr = document.createElement('tr');
+      const personh = document.createElement('th');
+      personh.innerText = 'Person';
+      personr.appendChild(personh);
+
+      print(popped);
+
+        for(let i=0;i<arr.length;i++) {
+            let jo = document.createElement('td');
+            if(arr[i][0] != undefined)
+                jo.innerText = arr[i][0]+1;
+            jobr.appendChild(jo);
+        }
+        
+        for(let i=0;i<arr.length;i++) {
+            let jo = document.createElement('td');
+            if(arr[i][0] != undefined)
+                jo.innerText = arr[i][1];
+            personr.appendChild(jo);
+            console.log(typeof(arr[i][1]));
+        }
+      
+        JP.appendChild(jobr);
+        JP.appendChild(personr);
+        cardRow2.appendChild(JP);
+
+      cardBody.appendChild(cardRow1);
+      cardBody.appendChild(cardRow2);
+      card.appendChild(cardBody);
       arrayDiv.appendChild(card);
     }
   }
