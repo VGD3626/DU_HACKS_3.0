@@ -16,20 +16,16 @@ class Node {
 }
 
 var arr = [[]];
-function print(min) {
-    if(min.parent == null) {
-        arr = [[]];
-var arr = [[]];
+
 function print(min) {
     if(min.parent == null) {
         arr = [[]];
         return;
     }
-    }
     print(min.parent);
     // console.log('Employee '+ parseInt(min.person+1) + 'have ' + parseInt(min.job+1));
     arr.push([min.job, min.person]);
-}
+    }
 
 async function clac_cost(j,p,assign){
     cost = 0;
@@ -47,7 +43,6 @@ async function clac_cost(j,p,assign){
     for(let i=j+1;i<n;i++){
         var min=Infinity,minidx=-1;
         for(let k=0;k<n;k++){
-            if(assign[k]==false && pjmatrix[k][i] < min){
             if(assign[k]==false && pjmatrix[k][i] < min){
                 minidx = k;
                 min = pjmatrix[k][i];
@@ -76,6 +71,7 @@ async function clac_cost(j,p,assign){
 }
 
 
+
 async function customDelay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -91,7 +87,6 @@ function find_min(){
 }
 
 
-async function branch_and_bound(){
 async function branch_and_bound(){
     const assign = new Array(n).fill(false);
     const root = new Node(null, -1, -1, assign);
@@ -126,7 +121,7 @@ async function branch_and_bound(){
                 var Child = new Node(min, i, j, new_assign);
                 Child.pathcost = parseInt(min.pathcost) + parseInt(pjmatrix[j][i]);
                 clac_cost(i,j,new_assign);
-                await new Promise(resolve=>setTimeout(resolve,500*n));
+                await new Promise(resolve=>setTimeout(resolve,1000*n));
                 Child.cost = parseInt(Child.pathcost) + parseInt(cost);
                 console.log('it is cost of child ' + Child.cost);
                 pq.push(Child);
